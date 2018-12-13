@@ -66,6 +66,7 @@ type FillVariants =
 type FontFamilyVariants = 'text';
 export type FontSizeVariants = TextSize | HeadingSize | 'interaction';
 export type FontWeightVariants = 'regular' | 'strong';
+export type HeadingFontWeightVariants = 'weak' | 'regular';
 type ResetTags =
   | 'html'
   | 'body'
@@ -177,6 +178,7 @@ export interface Atoms {
   fontFamily: Record<FontFamilyVariants, string>;
   fontSize: Record<FontSizeVariants, string>;
   fontWeight: Record<FontWeightVariants, string>;
+  headingFontWeight: Record<HeadingFontWeightVariants, string>;
   height: Record<SizeVariants, string>;
   marginTop: Record<SpacingVariants, string>;
   marginRight: Record<HorizontalSpacingVariants, string>;

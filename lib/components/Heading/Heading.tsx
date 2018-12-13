@@ -6,7 +6,7 @@ import Box from '../Box/Box';
 import {
   ColorVariants,
   HeadingSize,
-  FontWeightVariants,
+  HeadingFontWeightVariants,
   TransformVariants
 } from '../../themes/theme';
 
@@ -14,7 +14,7 @@ export interface Props extends WithThemeProps {
   component?: ReactType;
   size?: HeadingSize;
   color?: ColorVariants;
-  weight?: FontWeightVariants;
+  weight?: HeadingFontWeightVariants;
   baseline?: boolean;
   className?: string;
   children: ReactNode;
@@ -51,6 +51,10 @@ export default withTheme(
           ? theme.atoms.transform[transformSize]
           : '';
 
+      // Heading FontWeight is either regular or weak.
+      // So we remap to the original FontWeightVarients from there.
+      const fontWeight = weight === 'weak' ? 'regular' : 'strong';
+
       return (
         <Box
           component={component}
@@ -60,7 +64,7 @@ export default withTheme(
             theme.atoms.fontFamily.text,
             theme.atoms.color[color || 'neutral'],
             theme.atoms.fontSize[fontSize],
-            theme.atoms.fontWeight[weight || 'regular'],
+            theme.atoms.fontWeight[fontWeight],
             baselineTransform,
             {
               [styles.listItem]:
