@@ -44,10 +44,7 @@ type BackgroundColorVariants =
   | 'info'
   | 'card'
   | 'critical';
-type ButtonBackgroundColorVariants =
-| 'primary'
-| 'secondary'
-| 'callToAction';
+type ButtonBackgroundColorVariants = 'primary' | 'secondary' | 'callToAction';
 type BorderColorVariants = 'standard' | 'formAccent' | 'critical';
 type BorderRadiusVariants = 'standard';
 type BorderShadowVariants = 'focus';
