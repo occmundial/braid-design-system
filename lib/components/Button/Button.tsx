@@ -3,10 +3,10 @@ import classnames from 'classnames';
 import withTheme, { WithThemeProps } from '../private/withTheme';
 import PropTypes from 'prop-types';
 import styles from './Button.css.js.js';
-import { ColorVariants } from '../../themes/theme';
+import {  ButtonBackgroundColorVariants } from '../../themes/theme';
 
 export interface Props extends WithThemeProps {
-  color?: ColorVariants;
+  color?: ButtonBackgroundColorVariants;
   className?: string;
   children: ReactNode;
 }
@@ -17,13 +17,17 @@ export default withTheme(
 
     render() {
       const { theme, color, className, children } = this.props;
-
       return (
         <button
           className={classnames(
             className,
-            theme.atoms.backgroundColor.inputDisabled
-          )}
+            theme.atoms.buttonBackgroundColor[color || 'primary'],    
+            theme.atoms.fontSize.standard,
+            theme.atoms.paddingBottom.xsmall,
+            theme.atoms.paddingTop.xsmall,
+            theme.atoms.paddingRight.small,
+            theme.atoms.paddingLeft.small
+         )}
         >
           {children}
         </button>

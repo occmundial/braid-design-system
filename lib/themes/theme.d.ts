@@ -44,6 +44,10 @@ type BackgroundColorVariants =
   | 'info'
   | 'card'
   | 'critical';
+type ButtonBackgroundColorVariants =
+| 'primary'
+| 'secondary'
+| 'callToAction';
 type BorderColorVariants = 'standard' | 'formAccent' | 'critical';
 type BorderRadiusVariants = 'standard';
 type BorderShadowVariants = 'focus';
@@ -168,6 +172,7 @@ type TransitionVariants = 'fast';
 export interface Atoms {
   reset: Record<ResetTags, string>;
   backgroundColor: Record<BackgroundColorVariants, string>;
+  buttonBackgroundColor: Record<ButtonBackgroundColorVariants, string>;
   borderColor: Record<BorderColorVariants, string>;
   borderRadius: Record<BorderRadiusVariants, string>;
   borderWidth: Record<BorderWidthVariants, string>;
