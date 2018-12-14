@@ -3,3 +3,6 @@
 export const secondary: string;
 export const primary: string;
 export const callToAction: string;
+export const hyperlink: string;
+export const disabled: string;
+export const compact: string;

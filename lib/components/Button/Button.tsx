@@ -1,14 +1,16 @@
 import React, { Component, ReactNode, ReactType } from 'react';
 import classnames from 'classnames';
 import withTheme, { WithThemeProps } from '../private/withTheme';
-import PropTypes from 'prop-types';
-import styles from './Button.css.js.js';
-import {  ButtonBackgroundColorVariants } from '../../themes/theme';
+import {  ButtonColorVariants } from '../../themes/theme';
+import styles from './Button.css';
 
 export interface Props extends WithThemeProps {
-  color?: ButtonBackgroundColorVariants;
+  color?: ButtonColorVariants;
   className?: string;
   children: ReactNode;
+  disabled?: Boolean;
+  compact?: Boolean;
+  isSelected?: Boolean;
 }
 
 export default withTheme(
@@ -16,17 +18,17 @@ export default withTheme(
     static displayName = 'Button';
 
     render() {
-      const { theme, color, className, children } = this.props;
+      const { theme, color, className, children, isSelected } = this.props;
+      console.log(theme.atoms.button);
       return (
         <button
           className={classnames(
+            styles.button,
             className,
-            theme.atoms.buttonBackgroundColor[color || 'primary'],    
-            theme.atoms.fontSize.standard,
-            theme.atoms.paddingBottom.xsmall,
-            theme.atoms.paddingTop.xsmall,
-            theme.atoms.paddingRight.small,
-            theme.atoms.paddingLeft.small
+            theme.atoms.button[color || 'primary'],
+            {
+              ['isSelected']: isSelected
+            }
          )}
         >
           {children}
