@@ -1,7 +1,7 @@
 import React, { Component, ReactNode, ReactType } from 'react';
 import classnames from 'classnames';
 import withTheme, { WithThemeProps } from '../private/withTheme';
-import {  ButtonColorVariants } from '../../themes/theme';
+import { ButtonColorVariants } from '../../themes/theme';
 import styles from './Button.css';
 
 export interface Props extends WithThemeProps {
@@ -18,8 +18,7 @@ export default withTheme(
     static displayName = 'Button';
 
     render() {
-      const { theme, color, className, children, isSelected } = this.props;
-      console.log(theme.atoms.button);
+      const { theme, color, className, children, isSelected, disabled, compact } = this.props;
       return (
         <button
           className={classnames(
@@ -27,9 +26,11 @@ export default withTheme(
             className,
             theme.atoms.button[color || 'primary'],
             {
+              [theme.atoms.button.disabled]: disabled,
+              [theme.atoms.button.compact]: compact,
               ['isSelected']: isSelected
             }
-         )}
+          )}
         >
           {children}
         </button>

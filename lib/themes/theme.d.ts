@@ -45,10 +45,10 @@ type BackgroundColorVariants =
   | 'card'
   | 'critical';
 type ButtonColorVariants =
-| 'primary'
-| 'secondary'
-| 'callToAction'
-| 'hyperlink';
+  | 'primary'
+  | 'secondary'
+  | 'callToAction'
+  | 'hyperlink';
 type BorderColorVariants = 'standard' | 'formAccent' | 'critical';
 type BorderRadiusVariants = 'standard';
 type BorderShadowVariants = 'focus';
