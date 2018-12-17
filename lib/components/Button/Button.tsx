@@ -1,4 +1,4 @@
-import React, { Component, ReactNode, ReactType } from 'react';
+import React, { Component, ReactNode } from 'react';
 import classnames from 'classnames';
 import withTheme, { WithThemeProps } from '../private/withTheme';
 import { ButtonColorVariants } from '../../themes/theme';
