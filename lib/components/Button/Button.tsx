@@ -18,7 +18,15 @@ export default withTheme(
     static displayName = 'Button';
 
     render() {
-      const { theme, color, className, children, isSelected, disabled, compact } = this.props;
+      const {
+        theme,
+        color,
+        className,
+        children,
+        isSelected,
+        disabled,
+        compact
+      } = this.props;
       return (
         <button
           className={classnames(
