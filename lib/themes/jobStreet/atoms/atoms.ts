@@ -6,7 +6,6 @@ export { default as fontSize } from './font/fontSize.css.js';
 
 // Low level atoms, also serve as overrides for high level atoms
 export { default as backgroundColor } from './backgroundColor.css.js';
-export { default as button } from './button.css.js';
 export { default as borderColor } from './border/borderColor.css.js';
 export { default as borderRadius } from './border/borderRadius.css.js';
 export { default as borderWidth } from './border/borderWidth.css.js';

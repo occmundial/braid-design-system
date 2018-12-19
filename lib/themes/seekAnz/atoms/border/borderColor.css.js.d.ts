@@ -3,3 +3,6 @@
 export const standard: string;
 export const formAccent: string;
 export const critical: string;
+export const primary: string;
+export const secondary: string;
+export const callToAction: string;

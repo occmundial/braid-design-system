@@ -45,9 +45,18 @@ type BackgroundColorVariants =
   | 'card'
   | 'critical'
   | 'primary'
+  | 'primaryHovered'
+  | 'primaryActive'
   | 'secondary'
-  | 'callToAction';
-type BorderColorVariants = 'standard' | 'formAccent' | 'critical';
+  | 'secondaryHovered'
+  | 'secondaryActive'
+  | 'callToAction'
+  | 'callToActionHovered'
+  | 'callToActionActive';
+  
+type BorderColorVariants = 'standard'
+| 'formAccent'
+| 'critical';
 type BorderRadiusVariants = 'standard';
 type BorderShadowVariants = 'focus';
 export type ColorVariants =
