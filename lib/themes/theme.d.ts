@@ -18,6 +18,10 @@ interface Spacing {
   xxlarge: number;
 }
 
+interface ColumnSpacing extends Spacing {
+  gutter: number;
+}
+
 // Border definitions
 type BorderWidthVariants = 'standard';
 
@@ -29,7 +33,7 @@ export interface Tokens {
   descenderHeightScale: number;
   text: Record<TextSize, ResponsiveText>;
   rowSpacing: Spacing;
-  columnSpacing: Spacing | Record<'gutter', number>;
+  columnSpacing: ColumnSpacing;
   borderWidth: Record<BorderWidthVariants, number>;
 }
 
