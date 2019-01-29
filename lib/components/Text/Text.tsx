@@ -1,8 +1,9 @@
-import React, { Component, ReactNode, ReactType } from 'react';
+import React, { Component, ReactType } from 'react';
+import { Omit } from 'utility-types';
 import classnames from 'classnames';
-import withTheme, { WithThemeProps } from '../private/withTheme';
+import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import styles from './Text.css.js';
-import Box from '../Box/Box';
+import Box, { BoxProps } from '../Box/Box';
 import {
   ColorVariants,
   FontSizeVariants,
@@ -10,15 +11,12 @@ import {
   TransformVariants
 } from '../../themes/theme';
 
-// this shouldn't use FontSizeVarients
-export interface Props extends WithThemeProps {
+export interface TextProps extends BoxProps {
   component?: ReactType;
   size?: FontSizeVariants;
   color?: ColorVariants;
   weight?: FontWeightVariants;
   baseline?: boolean;
-  className?: string;
-  children: ReactNode;
 }
 
 const isTransformVariant = (
@@ -27,48 +25,50 @@ const isTransformVariant = (
 ): transformSize is TransformVariants =>
   Object.keys(atom).indexOf(transformSize) > -1;
 
-export default withTheme(
-  class Text extends Component<Props> {
-    static displayName = 'Text';
+export default class Text extends Component<TextProps> {
+  static displayName = 'Text';
 
-    render() {
-      const {
-        theme,
-        component,
-        size,
-        color,
-        weight,
-        baseline = true,
-        className = '',
-        ...restProps
-      } = this.props;
-      const fontSize = size || 'standard';
-
-      const transformSize = `${fontSize}Text`;
-      const baselineTransform =
-        isTransformVariant(theme.atoms.transform, transformSize) && baseline
-          ? theme.atoms.transform[transformSize]
-          : '';
-
-      return (
-        <Box
-          component={component}
-          className={classnames(
+  render() {
+    return (
+      <ThemeConsumer>
+        {theme => {
+          const {
+            component,
+            size = 'standard',
+            color,
+            weight,
+            baseline = true,
             className,
-            styles.block,
-            theme.atoms.fontFamily.text,
-            theme.atoms.color[color || 'neutral'],
-            theme.atoms.fontSize[fontSize],
-            theme.atoms.fontWeight[weight || 'regular'],
-            baselineTransform,
-            {
-              [styles.listItem]:
-                typeof component === 'string' && /^li$/i.test(component)
-            }
-          )}
-          {...restProps}
-        />
-      );
-    }
+            ...restProps
+          } = this.props;
+
+          const transformSize = `${size}Text`;
+          const baselineTransform =
+            isTransformVariant(theme.atoms.transform, transformSize) && baseline
+              ? theme.atoms.transform[transformSize]
+              : '';
+
+          return (
+            <Box
+              component={component}
+              className={classnames(
+                className,
+                styles.block,
+                theme.atoms.fontFamily.text,
+                theme.atoms.color[color || 'neutral'],
+                theme.atoms.fontSize[size],
+                theme.atoms.fontWeight[weight || 'regular'],
+                baselineTransform,
+                {
+                  [styles.listItem]:
+                    typeof component === 'string' && /^li$/i.test(component)
+                }
+              )}
+              {...restProps}
+            />
+          );
+        }}
+      </ThemeConsumer>
+    );
   }
-);
+}

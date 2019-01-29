@@ -53,10 +53,8 @@ type BackgroundColorVariants =
   | 'callToAction'
   | 'callToActionHovered'
   | 'callToActionActive';
-  
-type BorderColorVariants = 'standard'
-| 'formAccent'
-| 'critical';
+
+type BorderColorVariants = 'standard' | 'formAccent' | 'critical';
 type BorderRadiusVariants = 'standard';
 type BorderShadowVariants = 'focus';
 export type ColorVariants =
