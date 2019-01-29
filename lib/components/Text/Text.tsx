@@ -1,5 +1,4 @@
 import React, { Component, ReactType } from 'react';
-import { Omit } from 'utility-types';
 import classnames from 'classnames';
 import ThemeConsumer from '../ThemeConsumer/ThemeConsumer';
 import styles from './Text.css.js';
